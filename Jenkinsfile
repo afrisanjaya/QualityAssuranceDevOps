@@ -1,21 +1,21 @@
-pipeline{
-    agent any
+//pipline for testing with jest
+node {
+    stage('test') {
+        steps {
+        sh 'npm install --save-dev jest',
+        sh 'npm run test'
+        }
+    }
 
-    stages{
-        stage('Build'){
-            steps{
-                echo 'Build'
-            }
+    stage('build') {
+        steps {
+        sh 'npm run build'
         }
-        stage('Test'){
-            steps{
-                echo 'Test'
-            }
-        }
-        stage('Deploy'){
-            steps{
-                echo 'Deploy'
-            }
+    }
+
+    stage('deploy') {
+        steps {
+        sh 'npm run deploy'
         }
     }
 }
